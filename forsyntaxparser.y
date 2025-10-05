@@ -27,7 +27,10 @@ expr     : expra
 expra    : ID
 	 | NUM
 	 | LP expr RP
+	 | ID DEC
+	 | ID INC
 	 ;
+
 
 stmts : /* empty */
       | stmts stmt
