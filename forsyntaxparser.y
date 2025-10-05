@@ -8,7 +8,7 @@ int yyerror(char *s);
 %token FOR ID NUM
 %token OP
 %token EQ
-%token SC LP RP LPP RPP
+%token SC LP RP LPP RPP INC DEC
 
 %%
 
