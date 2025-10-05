@@ -23,9 +23,9 @@ char name[40], sub[5];
         }
     }
     if (!found)
-        printf(" substring\n", yytext);
-    else
-        printf("string\n", yytext);
+    printf("substring not found in \"%s\"\n", yytext);
+else
+    printf("substring found in \"%s\"\n", yytext);
 }
 [ \t\n]+ {}
 %%
