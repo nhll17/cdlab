@@ -63,13 +63,13 @@ int main() {
 
     for (int i = 0; i < n; i++) {
         if (!grouped[i]) {
-            int hasGroup = 0;
+            
             printf("{ %d", i);
             for (int j = i + 1; j < n; j++) {
                 if (!distinguish[i][j]) {
                     printf(", %d", j);
                     grouped[j] = 1;
-                    hasGroup = 1;
+                    
                 }
             }
             printf(" }\n");
