@@ -1,4 +1,3 @@
-
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -29,7 +28,8 @@ int main() {
     }
 
     int distinguish[MAX][MAX] = {0};
-    // mark final/nonfinal pairs
+
+    // Mark final/nonfinal pairs
     for (int i = 0; i < n; i++) {
         for (int j = i + 1; j < n; j++) {
             if (final[i] != final[j])
@@ -37,7 +37,7 @@ int main() {
         }
     }
 
-    // refinement
+    // Refinement step
     int changed = 1;
     while (changed) {
         changed = 0;
@@ -57,11 +57,23 @@ int main() {
         }
     }
 
-    printf("\nEquivalent states:\n");
+    // Group equivalent states
+    int grouped[MAX] = {0};
+    printf("\nMinimized DFA Groups:\n");
+
     for (int i = 0; i < n; i++) {
-        for (int j = i + 1; j < n; j++) {
-            if (!distinguish[i][j])
-                printf("State %d and %d are equivalent\n", i, j);
+        if (!grouped[i]) {
+            int hasGroup = 0;
+            printf("{ %d", i);
+            for (int j = i + 1; j < n; j++) {
+                if (!distinguish[i][j]) {
+                    printf(", %d", j);
+                    grouped[j] = 1;
+                    hasGroup = 1;
+                }
+            }
+            printf(" }\n");
+            grouped[i] = 1;
         }
     }
 
